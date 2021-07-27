@@ -13,19 +13,20 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-include device/samsung/exynos990-common/BoardConfigPlatform.mk
+## Inherit from the common tree
+include device/samsung/exynos990-common/BoardConfigCommon.mk
+
+## Inherit from the proprietary configuration
 include vendor/samsung/y2s/BoardConfigVendor.mk
 
 DEVICE_PATH := device/samsung/y2s
 
-PRODUCT_PLATFORM := exynos990
-
-# APEX image
+## APEX image
 DEXPREOPT_GENERATE_APEX_IMAGE := true
 
-TARGET_OTA_ASSERT_DEVICE := y2s
+TARGET_SPECIFIC_HEADER_PATH += $(DEVICE_PATH)/include
 
-TARGET_SPECIFIC_HEADER_PATH += $(DEVICE_PATH)/hardware/include
+TARGET_OTA_ASSERT_DEVICE := y2s
 
 ### DISPLAY
 TARGET_SCREEN_DENSITY := 450
@@ -35,9 +36,3 @@ TARGET_INIT_VENDOR_LIB := //$(DEVICE_PATH):libinit_y2s
 
 ### KERNEL
 TARGET_KERNEL_CONFIG := exynos9830-y2sxxx_defconfig
-
-### SYSTEM PROPS
-TARGET_SYSTEM_PROP += $(DEVICE_PATH)/system.prop
-
-### VENDOR PROPS
-TARGET_VENDOR_PROP += $(DEVICE_PATH)/vendor.prop
