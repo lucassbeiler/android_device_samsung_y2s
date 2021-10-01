@@ -42,10 +42,7 @@ void vendor_load_properties()
     std::string bootloader = GetProperty("ro.bootloader", "");
 
     if (bootloader.find("G985F") == 0) {
-        property_override("ro.build.description", "y2sxx-user 11 RP1A.200720.012 G985FXXU5CUA3 release-keys");
-        set_ro_build_prop("fingerprint", "samsung/y2sxx/y2s:11/RP1A.200720.012/G985FXXU5CUA3:user/release-keys");
         set_ro_product_prop("model", "SM-G985F");
-        set_ro_product_prop("name", "y2sxx");
     }
 
     std::string device = GetProperty("ro.product.device", "");
